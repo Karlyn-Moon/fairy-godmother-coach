@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>仙女教母 · 沉浸式人生指导</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div class="ambient" aria-hidden="true">
+      <div class="moon"></div>
+      <img class="scene-art" src="./assets/sanctuary-scene.svg" alt="">
+      <canvas id="sparkCanvas"></canvas>
+    </div>
+
+    <aside class="sidebar" aria-label="指导领域">
+      <div class="brand">
+        <span class="brand-mark">✦</span>
+        <div>
+          <strong>仙女教母</strong>
+          <small>Life · Study · Work</small>
+        </div>
+      </div>
+
+      <nav class="realm-tabs" aria-label="选择指导方向">
+        <button class="realm-tab is-active" data-realm="life" type="button">
+          <span>生活</span>
+          <small>能量、秩序、关系</small>
+        </button>
+        <button class="realm-tab" data-realm="study" type="button">
+          <span>学习</span>
+          <small>理解、练习、反馈</small>
+        </button>
+        <button class="realm-tab" data-realm="work" type="button">
+          <span>工作</span>
+          <small>目标、交付、沟通</small>
+        </button>
+      </nav>
+
+      <div class="compass-panel">
+        <span class="panel-label">今日指针</span>
+        <p id="realmCompass">先让生活恢复流动，再让目标自然落地。</p>
+      </div>
+
+      <div class="status-panel">
+        <span class="panel-label">三界进度</span>
+        <ul class="realm-status-list" id="realmStatusList"></ul>
+      </div>
+
+      <div class="status-panel">
+        <span class="panel-label">今日轨迹</span>
+        <div class="daily-track">
+          <strong id="streakCount">0</strong>
+          <span>连续封存</span>
+          <p id="dailyTrackText">完成一次复盘后，教母会开始替你记录节奏。</p>
+        </div>
+      </div>
+
+      <div class="status-panel">
+        <span class="panel-label">个人画像</span>
+        <p class="profile-snapshot" id="profileSnapshot">还没有画像。先让教母认识你一点点。</p>
+      </div>
+    </aside>
+
+    <main class="coach-stage">
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">Fairy Godmother Coach</span>
+          <h1>把混乱变成下一步，把愿望变成今天能做的事。</h1>
+          <p>三位神话系仙女教母会分别照看生活、学习与工作，先听见目标，再看见阻力，最后把它拆成温柔但明确的行动仪式。</p>
+        </div>
+        <div class="godmother-card" aria-label="仙女教母状态">
+          <img class="character-portrait" id="characterPortrait" src="./assets/hestia-hearth-godmother.svg" alt="赫丝塔·炉心，生活教母">
+          <div class="character-bio">
+            <span class="panel-label" id="characterArchetype">炉火与丰饶原型</span>
+            <strong id="godmotherName">赫丝塔·炉心</strong>
+            <p id="godmotherTone">温柔校准你的生活节奏，先把心安顿好。</p>
+            <div class="character-traits" id="characterTraits" aria-label="人物特征"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="profile-panel">
+        <div class="section-heading">
+          <span>00</span>
+          <h2>个人画像</h2>
+        </div>
+        <div class="profile-grid">
+          <label class="field">
+            <span>当前阶段</span>
+            <select id="stageInput">
+              <option value="探索期">探索期</option>
+              <option value="冲刺期">冲刺期</option>
+              <option value="稳定期">稳定期</option>
+              <option value="恢复期">恢复期</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>主要压力源</span>
+            <input id="pressureInput" type="text" placeholder="例如：时间不够、目标太多、关系消耗">
+          </label>
+          <label class="field">
+            <span>高能时段</span>
+            <select id="rhythmInput">
+              <option value="早晨">早晨</option>
+              <option value="午后">午后</option>
+              <option value="夜晚">夜晚</option>
+              <option value="碎片时间">碎片时间</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>需要的支持</span>
+            <select id="supportInput">
+              <option value="温柔">温柔</option>
+              <option value="清晰">清晰</option>
+              <option value="推进">推进</option>
+            </select>
+          </label>
+          <label class="field profile-wide">
+            <span>你正在成为怎样的人</span>
+            <input id="identityInput" type="text" placeholder="例如：稳定、清醒、能把重要事推进的人">
+          </label>
+          <button class="secondary-action profile-save" id="saveProfile" type="button">保存画像</button>
+        </div>
+        <p class="profile-insight" id="profileInsight">画像会影响教母的语气、拆解尺度和每日提醒。</p>
+      </section>
+
+      <section class="workspace-grid">
+        <form class="intake-panel" id="coachForm">
+          <div class="section-heading">
+            <span>01</span>
+            <h2>告诉教母你此刻最想改变什么</h2>
+          </div>
+
+          <label class="field">
+            <span>你的目标</span>
+            <textarea id="goalInput" rows="4" placeholder="例如：我想把生活作息调整回来，同时准备下周的重要汇报。"></textarea>
+          </label>
+
+          <label class="field">
+            <span>现在卡住你的原因</span>
+            <textarea id="frictionInput" rows="3" placeholder="例如：总是拖延，任务太大，不知道先做哪一步。"></textarea>
+          </label>
+
+          <div class="control-row">
+            <label class="field compact">
+              <span>今日可用时间</span>
+              <select id="timeInput">
+                <option value="15">15 分钟</option>
+                <option value="30" selected>30 分钟</option>
+                <option value="60">60 分钟</option>
+                <option value="90">90 分钟</option>
+              </select>
+            </label>
+
+            <label class="field compact">
+              <span>当前能量</span>
+              <input id="energyInput" type="range" min="1" max="5" value="3">
+            </label>
+          </div>
+
+          <div class="toggle-group" role="group" aria-label="教练模式">
+            <button class="mode-toggle is-active" type="button" data-mode="gentle">温柔</button>
+            <button class="mode-toggle" type="button" data-mode="clear">清晰</button>
+            <button class="mode-toggle" type="button" data-mode="bold">推进</button>
+          </div>
+
+          <button class="primary-action" type="submit">
+            <span>召唤今日指导</span>
+            <span class="action-glyph">✦</span>
+          </button>
+        </form>
+
+        <section class="guidance-panel" aria-live="polite">
+          <div class="section-heading">
+            <span>02</span>
+            <h2>教母的即时指导</h2>
+          </div>
+
+          <div class="message-bubble" id="messageBubble">
+            <p>孩子，先不用变得完美。把今天交给我，我们只点亮下一盏灯。</p>
+          </div>
+
+          <div class="insight-strip">
+            <div>
+              <span>阻力识别</span>
+              <strong id="frictionType">未开始</strong>
+            </div>
+            <div>
+              <span>行动尺度</span>
+              <strong id="actionScale">微行动</strong>
+            </div>
+            <div>
+              <span>陪伴节奏</span>
+              <strong id="coachRhythm">安顿 → 推进 → 复盘</strong>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="ritual-loop-panel">
+        <div class="section-heading">
+          <span>03</span>
+          <h2>今日仪式闭环</h2>
+        </div>
+        <div class="ritual-loop-grid">
+          <article class="ritual-step" data-step="morning">
+            <span>晨间许愿</span>
+            <strong id="morningWishText">把今天最重要的一件事放到光里。</strong>
+            <button class="ritual-button" type="button" data-ritual="morning">点亮</button>
+          </article>
+          <article class="ritual-step" data-step="action">
+            <span>行动陪伴</span>
+            <strong id="actionCompanionText">用一个小动作证明你已经开始。</strong>
+            <button class="ritual-button" type="button" data-ritual="action">点亮</button>
+          </article>
+          <article class="ritual-step" data-step="night">
+            <span>夜间复盘</span>
+            <strong id="nightReviewText">封存今天，而不是苛责今天。</strong>
+            <button class="ritual-button" type="button" data-ritual="night">点亮</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="plan-board">
+        <div class="section-heading">
+          <span>04</span>
+          <h2>三层拆解：愿望、路径、下一步</h2>
+        </div>
+
+        <div class="cards" id="planCards">
+          <article class="ritual-card">
+            <span class="card-kicker">愿望层</span>
+            <h3>说出你想抵达的状态</h3>
+            <p>先把目标放到光里，而不是把自己放到压力里。</p>
+          </article>
+          <article class="ritual-card">
+            <span class="card-kicker">路径层</span>
+            <h3>拆掉最重的阻力</h3>
+            <p>把“我要改变”改写成“我先处理哪一个卡点”。</p>
+          </article>
+          <article class="ritual-card">
+            <span class="card-kicker">行动层</span>
+            <h3>只开始第一个动作</h3>
+            <p>一个清楚的小动作，会比一整套宏大计划更有魔法。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="task-panel">
+        <div class="section-heading">
+          <span>05</span>
+          <h2>今日推进板</h2>
+        </div>
+        <div class="task-checklist" id="taskChecklist"></div>
+        <label class="field">
+          <span>卡点记录</span>
+          <input id="taskNoteInput" type="text" placeholder="例如：开始很难，但打开材料后就顺了">
+        </label>
+        <button class="secondary-action" id="saveTaskNote" type="button">保存推进记录</button>
+        <p class="task-status" id="taskStatus">生成指导后，教母会把行动层放到这里追踪。</p>
+      </section>
+
+      <section class="focus-lab">
+        <div class="focus-copy">
+          <div class="section-heading">
+            <span>06</span>
+            <h2>星尘专注仪式</h2>
+          </div>
+          <p id="focusPrompt">生成指导后，我会给你一个刚刚好的第一步。按下开始，就让世界安静一小会儿。</p>
+        </div>
+        <div class="timer-panel">
+          <div class="timer-ring" id="timerRing">
+            <span id="timerText">15:00</span>
+          </div>
+          <div class="timer-actions">
+            <button id="startTimer" type="button">开始</button>
+            <button id="resetTimer" type="button">重置</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="conversation-panel">
+        <div class="section-heading">
+          <span>07</span>
+          <h2>教母对话间</h2>
+        </div>
+        <div class="chat-log" id="chatLog" aria-live="polite"></div>
+        <div class="quick-prompts" aria-label="快速提问">
+          <button type="button" data-prompt="我现在不想开始，帮我把入口变小。">不想开始</button>
+          <button type="button" data-prompt="我有点焦虑，帮我降低风险。">有点焦虑</button>
+          <button type="button" data-prompt="帮我把下一步说得更具体。">更具体</button>
+        </div>
+        <form class="chat-form" id="chatForm">
+          <label class="field">
+            <span>继续和教母说</span>
+            <input id="chatInput" type="text" placeholder="例如：我怕做不好，所以一直拖着。">
+          </label>
+          <div class="chat-actions">
+            <button class="secondary-action" id="speakLast" type="button">朗读上一条</button>
+            <button class="primary-action compact-action" type="submit">
+              <span>回应我</span>
+              <span class="action-glyph">✦</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="reflection-panel">
+        <div class="section-heading">
+          <span>08</span>
+          <h2>复盘与明日魔法</h2>
+        </div>
+        <div class="reflection-grid">
+          <label class="field">
+            <span>刚才完成了什么</span>
+            <input id="doneInput" type="text" placeholder="写下一个真实完成的小动作">
+          </label>
+          <label class="field">
+            <span>明天要保留什么</span>
+            <input id="tomorrowInput" type="text" placeholder="例如：先做 10 分钟，再决定是否继续">
+          </label>
+        </div>
+        <button class="secondary-action" id="sealReflection" type="button">封存今日星尘</button>
+        <p class="reflection-result" id="reflectionResult"></p>
+        <div class="archive-panel">
+          <span class="panel-label">成长档案</span>
+          <ul class="archive-list" id="archiveList"></ul>
+        </div>
+      </section>
+
+      <section class="growth-book-panel">
+        <div class="section-heading">
+          <span>09</span>
+          <h2>成长魔法书</h2>
+        </div>
+        <div class="growth-grid" id="growthGrid"></div>
+        <div class="growth-notes">
+          <article>
+            <span class="panel-label">阻力模式</span>
+            <p id="frictionPattern">还没有足够记录。先完成一次今日闭环。</p>
+          </article>
+          <article>
+            <span class="panel-label">教母记忆摘要</span>
+            <p id="coachContextDigest">画像、目标、阻力和复盘会在这里合成下一步指导上下文。</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

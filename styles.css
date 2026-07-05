@@ -1,0 +1,1055 @@
+:root {
+  color-scheme: dark;
+  --ink: #f7f0ff;
+  --muted: rgba(247, 240, 255, 0.72);
+  --soft: rgba(247, 240, 255, 0.12);
+  --line: rgba(247, 240, 255, 0.22);
+  --glass: rgba(17, 19, 38, 0.58);
+  --glass-strong: rgba(20, 23, 45, 0.78);
+  --gold: #f4cd73;
+  --rose: #ff8aa3;
+  --mint: #74e4c0;
+  --sky: #89b8ff;
+  --shadow: rgba(0, 0, 0, 0.38);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: #111326;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  font-family: Inter, "Noto Serif SC", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #101428 0%, #1d2240 52%, #162736 100%);
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  position: relative;
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+#sparkCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.moon {
+  position: absolute;
+  top: 48px;
+  right: 10vw;
+  width: 144px;
+  height: 144px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 36% 34%, #fff8d7 0 12%, transparent 13%),
+    radial-gradient(circle at 55% 52%, #f7dba0 0 8%, transparent 9%),
+    radial-gradient(circle at 50% 50%, #fff4c7 0%, #f3d484 62%, #d79668 100%);
+  box-shadow: 0 0 58px rgba(244, 205, 115, 0.55), 0 0 140px rgba(137, 184, 255, 0.22);
+  opacity: 0.88;
+}
+
+.scene-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.48;
+  transform: scale(1.03);
+}
+
+@keyframes drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(4vw, -3vh, 0) scale(1.08); }
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 26px 20px;
+  border-right: 1px solid rgba(247, 240, 255, 0.16);
+  background: rgba(7, 9, 24, 0.45);
+  backdrop-filter: blur(28px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 34px;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(244, 205, 115, 0.52);
+  border-radius: 50%;
+  color: var(--gold);
+  background: rgba(244, 205, 115, 0.1);
+  box-shadow: 0 0 30px rgba(244, 205, 115, 0.2);
+}
+
+.brand strong,
+.godmother-card strong {
+  display: block;
+  font-family: "Noto Serif SC", serif;
+  font-size: 18px;
+  letter-spacing: 0;
+}
+
+.brand small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.realm-tabs {
+  display: grid;
+  gap: 10px;
+}
+
+.realm-tab {
+  width: 100%;
+  padding: 16px;
+  color: var(--ink);
+  text-align: left;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: rgba(247, 240, 255, 0.08);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.realm-tab:hover,
+.realm-tab:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(244, 205, 115, 0.42);
+  outline: none;
+}
+
+.realm-tab.is-active {
+  border-color: rgba(244, 205, 115, 0.72);
+  background: linear-gradient(135deg, rgba(244, 205, 115, 0.22), rgba(116, 228, 192, 0.1));
+  box-shadow: inset 0 0 28px rgba(244, 205, 115, 0.08);
+}
+
+.realm-tab span {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 800;
+}
+
+.realm-tab small {
+  color: var(--muted);
+}
+
+.compass-panel {
+  margin-top: 28px;
+  padding: 18px;
+  border: 1px solid rgba(247, 240, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(247, 240, 255, 0.07);
+}
+
+.panel-label,
+.eyebrow,
+.card-kicker,
+.insight-strip span,
+.field span {
+  color: rgba(247, 240, 255, 0.62);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.compass-panel p {
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.profile-snapshot {
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.daily-track {
+  margin-top: 14px;
+}
+
+.daily-track strong {
+  display: block;
+  color: var(--gold);
+  font-size: 36px;
+  line-height: 1;
+}
+
+.daily-track span {
+  display: block;
+  margin-top: 4px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.daily-track p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.status-panel {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid rgba(247, 240, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(247, 240, 255, 0.07);
+}
+
+.realm-status-list,
+.archive-list {
+  display: grid;
+  gap: 12px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.realm-status-item,
+.archive-item {
+  display: grid;
+  gap: 4px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(247, 240, 255, 0.12);
+}
+
+.realm-status-item:last-child,
+.archive-item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.realm-status-item strong,
+.archive-item strong {
+  font-size: 14px;
+}
+
+.realm-status-item span,
+.archive-item span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.coach-stage {
+  width: min(1180px, 100%);
+  padding: 34px clamp(18px, 3vw, 44px) 56px;
+  margin: 0 auto;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  align-items: end;
+  gap: 24px;
+  min-height: 48vh;
+  padding: 56px 0 28px;
+}
+
+.hero-copy h1 {
+  max-width: 850px;
+  margin: 14px 0 18px;
+  font-family: "Noto Serif SC", serif;
+  font-size: clamp(42px, 7vw, 84px);
+  line-height: 1.04;
+  letter-spacing: 0;
+}
+
+.hero-copy p {
+  max-width: 650px;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(17px, 2vw, 22px);
+  line-height: 1.8;
+}
+
+.godmother-card,
+.profile-panel,
+.intake-panel,
+.guidance-panel,
+.ritual-loop-panel,
+.task-panel,
+.focus-lab,
+.conversation-panel,
+.reflection-panel,
+.growth-book-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--glass);
+  box-shadow: 0 24px 80px var(--shadow);
+  backdrop-filter: blur(26px);
+}
+
+.godmother-card {
+  display: grid;
+  grid-template-columns: 138px minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
+  padding: 14px;
+}
+
+.godmother-card p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.character-portrait {
+  width: 138px;
+  aspect-ratio: 14 / 19;
+  border: 1px solid rgba(244, 205, 115, 0.4);
+  border-radius: 8px;
+  object-fit: cover;
+  background: rgba(7, 9, 24, 0.3);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24), 0 0 34px rgba(244, 205, 115, 0.12);
+}
+
+.character-bio {
+  min-width: 0;
+}
+
+.character-traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.character-traits span {
+  padding: 6px 8px;
+  color: rgba(247, 240, 255, 0.82);
+  border: 1px solid rgba(247, 240, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(247, 240, 255, 0.08);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.portrait {
+  position: relative;
+  flex: 0 0 auto;
+  width: 96px;
+  height: 120px;
+}
+
+.halo {
+  position: absolute;
+  top: 5px;
+  left: 16px;
+  width: 64px;
+  height: 22px;
+  border: 2px solid rgba(244, 205, 115, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 0 24px rgba(244, 205, 115, 0.5);
+}
+
+.face {
+  position: absolute;
+  left: 20px;
+  top: 30px;
+  width: 58px;
+  height: 72px;
+  border-radius: 44% 44% 48% 48%;
+  background:
+    radial-gradient(circle at 28% 26%, rgba(255, 255, 255, 0.7), transparent 8%),
+    linear-gradient(160deg, #ffe7c6, #db8f92);
+  box-shadow: inset 0 -10px 18px rgba(86, 36, 62, 0.18), 0 10px 28px rgba(0, 0, 0, 0.22);
+}
+
+.eye {
+  position: absolute;
+  top: 30px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #36254b;
+}
+
+.eye.left {
+  left: 18px;
+}
+
+.eye.right {
+  right: 18px;
+}
+
+.smile {
+  position: absolute;
+  left: 22px;
+  top: 48px;
+  width: 16px;
+  height: 8px;
+  border-bottom: 2px solid rgba(54, 37, 75, 0.75);
+  border-radius: 0 0 14px 14px;
+}
+
+.wand {
+  position: absolute;
+  right: 2px;
+  bottom: 10px;
+  width: 4px;
+  height: 72px;
+  border-radius: 999px;
+  background: linear-gradient(#f7e29c, #89b8ff);
+  transform: rotate(34deg);
+  transform-origin: bottom;
+}
+
+.wand::before {
+  content: "✦";
+  position: absolute;
+  top: -23px;
+  left: -9px;
+  color: var(--gold);
+  font-size: 24px;
+  text-shadow: 0 0 18px rgba(244, 205, 115, 0.8);
+}
+
+.workspace-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(360px, 1.1fr);
+  gap: 18px;
+}
+
+.intake-panel,
+.guidance-panel,
+.profile-panel,
+.ritual-loop-panel,
+.task-panel,
+.focus-lab,
+.conversation-panel,
+.reflection-panel,
+.growth-book-panel {
+  padding: 22px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.section-heading > span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(244, 205, 115, 0.44);
+  border-radius: 50%;
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-family: "Noto Serif SC", serif;
+  font-size: clamp(19px, 2vw, 25px);
+  letter-spacing: 0;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.field textarea,
+.field input,
+.field select {
+  width: 100%;
+  min-height: 48px;
+  padding: 13px 14px;
+  color: var(--ink);
+  border: 1px solid rgba(247, 240, 255, 0.22);
+  border-radius: 8px;
+  background: rgba(7, 9, 24, 0.36);
+  outline: none;
+  resize: vertical;
+}
+
+.field textarea:focus,
+.field input:focus,
+.field select:focus {
+  border-color: rgba(244, 205, 115, 0.74);
+  box-shadow: 0 0 0 3px rgba(244, 205, 115, 0.12);
+}
+
+.field select {
+  appearance: none;
+}
+
+.field input[type="range"] {
+  padding: 0;
+  accent-color: var(--gold);
+}
+
+.control-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.toggle-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 6px 0 16px;
+}
+
+.mode-toggle,
+.secondary-action,
+.timer-actions button {
+  min-height: 44px;
+  color: var(--ink);
+  border: 1px solid rgba(247, 240, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(247, 240, 255, 0.08);
+}
+
+.mode-toggle.is-active {
+  color: #23192d;
+  border-color: transparent;
+  background: var(--gold);
+  font-weight: 800;
+}
+
+.primary-action,
+.secondary-action {
+  width: 100%;
+}
+
+.primary-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 54px;
+  padding: 0 18px;
+  color: #1b1525;
+  border: 0;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f4cd73, #ff8aa3 54%, #74e4c0);
+  box-shadow: 0 12px 36px rgba(244, 205, 115, 0.2);
+  font-weight: 900;
+}
+
+.action-glyph {
+  font-size: 22px;
+}
+
+.message-bubble {
+  position: relative;
+  min-height: 156px;
+  padding: 24px;
+  border: 1px solid rgba(247, 240, 255, 0.14);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(247, 240, 255, 0.12), rgba(116, 228, 192, 0.08));
+}
+
+.message-bubble p {
+  margin: 0;
+  font-family: "Noto Serif SC", serif;
+  font-size: clamp(20px, 2.6vw, 33px);
+  line-height: 1.56;
+}
+
+.insight-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.insight-strip div {
+  min-height: 86px;
+  padding: 14px;
+  border: 1px solid rgba(247, 240, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(7, 9, 24, 0.28);
+}
+
+.insight-strip strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.profile-panel,
+.plan-board,
+.ritual-loop-panel,
+.task-panel,
+.focus-lab,
+.reflection-panel,
+.growth-book-panel {
+  margin-top: 18px;
+}
+
+.conversation-panel {
+  margin-top: 18px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.profile-wide {
+  grid-column: span 3;
+}
+
+.profile-save {
+  align-self: end;
+  min-height: 48px;
+}
+
+.profile-insight,
+.task-status {
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.ritual-loop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.ritual-step {
+  display: grid;
+  gap: 12px;
+  min-height: 170px;
+  padding: 18px;
+  border: 1px solid rgba(247, 240, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(7, 9, 24, 0.28);
+}
+
+.ritual-step.is-complete {
+  border-color: rgba(244, 205, 115, 0.56);
+  background: linear-gradient(135deg, rgba(244, 205, 115, 0.16), rgba(116, 228, 192, 0.08));
+}
+
+.ritual-step > span {
+  color: rgba(247, 240, 255, 0.62);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ritual-step strong {
+  font-family: "Noto Serif SC", serif;
+  font-size: 20px;
+  line-height: 1.45;
+}
+
+.ritual-button {
+  align-self: end;
+  min-height: 40px;
+  color: var(--ink);
+  border: 1px solid rgba(244, 205, 115, 0.35);
+  border-radius: 8px;
+  background: rgba(244, 205, 115, 0.1);
+}
+
+.ritual-step.is-complete .ritual-button {
+  color: #23192d;
+  background: var(--gold);
+  font-weight: 900;
+}
+
+.task-checklist {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.task-item {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+  padding: 13px 14px;
+  border: 1px solid rgba(247, 240, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(7, 9, 24, 0.28);
+}
+
+.task-item input {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  accent-color: var(--gold);
+}
+
+.task-item span {
+  color: rgba(247, 240, 255, 0.82);
+  line-height: 1.55;
+}
+
+.task-item.is-done {
+  border-color: rgba(116, 228, 192, 0.46);
+  background: rgba(116, 228, 192, 0.08);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.ritual-card {
+  min-height: 220px;
+  padding: 20px;
+  border: 1px solid rgba(247, 240, 255, 0.18);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(247, 240, 255, 0.12), rgba(247, 240, 255, 0.06)),
+    rgba(7, 9, 24, 0.38);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.18);
+}
+
+.ritual-card h3 {
+  margin: 14px 0 10px;
+  font-family: "Noto Serif SC", serif;
+  font-size: 23px;
+  line-height: 1.32;
+}
+
+.ritual-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.ritual-list {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ritual-list li {
+  position: relative;
+  padding-left: 20px;
+  color: rgba(247, 240, 255, 0.8);
+  line-height: 1.55;
+}
+
+.ritual-list li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--gold);
+}
+
+.focus-lab {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  align-items: center;
+  gap: 22px;
+  background:
+    linear-gradient(135deg, rgba(116, 228, 192, 0.12), rgba(255, 138, 163, 0.1)),
+    var(--glass);
+}
+
+.focus-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.timer-panel {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+}
+
+.timer-ring {
+  display: grid;
+  place-items: center;
+  width: 156px;
+  height: 156px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, rgba(17, 19, 38, 0.96) 0 58%, transparent 59%),
+    conic-gradient(var(--gold) var(--progress, 0deg), rgba(247, 240, 255, 0.16) 0);
+  box-shadow: inset 0 0 20px rgba(244, 205, 115, 0.18), 0 0 44px rgba(116, 228, 192, 0.16);
+}
+
+.timer-ring span {
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.timer-actions {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.reflection-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.secondary-action {
+  margin-top: 4px;
+  border-color: rgba(244, 205, 115, 0.4);
+}
+
+.chat-log {
+  display: grid;
+  gap: 12px;
+  max-height: 360px;
+  overflow: auto;
+  padding: 4px 4px 12px;
+}
+
+.chat-message {
+  max-width: min(760px, 92%);
+  padding: 14px 16px;
+  border: 1px solid rgba(247, 240, 255, 0.14);
+  border-radius: 8px;
+  line-height: 1.72;
+}
+
+.chat-message.coach {
+  justify-self: start;
+  background: linear-gradient(135deg, rgba(244, 205, 115, 0.14), rgba(116, 228, 192, 0.08));
+}
+
+.chat-message.user {
+  justify-self: end;
+  background: rgba(137, 184, 255, 0.12);
+}
+
+.chat-message strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--gold);
+  font-size: 13px;
+}
+
+.quick-prompts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 16px;
+}
+
+.quick-prompts button {
+  min-height: 38px;
+  padding: 0 12px;
+  color: var(--ink);
+  border: 1px solid rgba(247, 240, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(247, 240, 255, 0.08);
+}
+
+.chat-form {
+  display: grid;
+  gap: 12px;
+}
+
+.chat-form .field {
+  margin-bottom: 0;
+}
+
+.chat-actions {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.5fr) minmax(220px, 1fr);
+  gap: 10px;
+}
+
+.compact-action {
+  min-height: 44px;
+}
+
+.reflection-result {
+  min-height: 30px;
+  margin: 14px 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.archive-panel {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid rgba(247, 240, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(7, 9, 24, 0.22);
+}
+
+.growth-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.growth-card,
+.growth-notes article {
+  padding: 18px;
+  border: 1px solid rgba(247, 240, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(7, 9, 24, 0.26);
+}
+
+.growth-card strong {
+  display: block;
+  margin-bottom: 10px;
+  font-family: "Noto Serif SC", serif;
+  font-size: 20px;
+}
+
+.growth-meter {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(247, 240, 255, 0.12);
+}
+
+.growth-meter span {
+  display: block;
+  width: var(--meter, 0%);
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--mint));
+}
+
+.growth-card p,
+.growth-notes p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.growth-notes {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+@media (max-width: 980px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: relative;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid rgba(247, 240, 255, 0.16);
+  }
+
+  .realm-tabs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero,
+  .workspace-grid,
+  .focus-lab,
+  .profile-grid,
+  .growth-notes {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-wide {
+    grid-column: auto;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 34px;
+  }
+}
+
+@media (max-width: 720px) {
+  .coach-stage {
+    padding-inline: 14px;
+  }
+
+  .realm-tabs,
+  .cards,
+  .ritual-loop-grid,
+  .growth-grid,
+  .insight-strip,
+  .control-row,
+  .chat-actions,
+  .reflection-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy h1 {
+    font-size: 40px;
+  }
+
+  .moon {
+    right: -28px;
+    width: 118px;
+    height: 118px;
+  }
+
+  .godmother-card {
+    grid-template-columns: 110px minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .character-portrait {
+    width: 110px;
+  }
+}
