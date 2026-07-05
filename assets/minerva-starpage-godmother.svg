@@ -1,0 +1,67 @@
+<svg width="560" height="760" viewBox="0 0 560 760" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">弥涅尔瓦·星卷，学习教母</title>
+  <desc id="desc">借鉴智慧女神气质的学习教母，银蓝短发，佩戴星冠，手持展开的星卷。</desc>
+  <rect width="560" height="760" rx="36" fill="#101936"/>
+  <rect width="560" height="760" rx="36" fill="url(#bg)" opacity="0.92"/>
+  <circle cx="280" cy="124" r="84" fill="#89B8FF" fill-opacity="0.18"/>
+  <path d="M118 704C150 548 184 440 218 360H342C376 440 410 548 442 704H118Z" fill="url(#robe)"/>
+  <path d="M212 374L280 704L348 374C328 398 305 410 280 410C255 410 232 398 212 374Z" fill="#121D3C" opacity="0.88"/>
+  <path d="M186 176C194 96 230 54 280 54C330 54 366 96 374 176C383 268 344 332 280 332C216 332 177 268 186 176Z" fill="url(#hair)"/>
+  <path d="M210 176C214 120 240 88 280 88C320 88 346 120 350 176L344 240C339 296 313 328 280 328C247 328 221 296 216 240L210 176Z" fill="url(#skin)"/>
+  <path d="M204 170C234 152 255 126 268 92C286 128 314 152 356 172C349 112 321 78 280 78C239 78 211 112 204 170Z" fill="#DCEBFF"/>
+  <path d="M216 126L250 116L280 88L310 116L344 126L318 142L280 126L242 142L216 126Z" fill="#F4CD73"/>
+  <ellipse cx="252" cy="214" rx="9" ry="10" fill="#263452"/>
+  <ellipse cx="308" cy="214" rx="9" ry="10" fill="#263452"/>
+  <circle cx="249" cy="211" r="3" fill="#89B8FF"/>
+  <circle cx="305" cy="211" r="3" fill="#89B8FF"/>
+  <path d="M264 254C274 261 286 261 296 254" stroke="#784D6A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M225 332C242 354 260 365 280 365C300 365 318 354 335 332V388C318 406 300 415 280 415C260 415 242 406 225 388V332Z" fill="#E6B0A0"/>
+  <path d="M210 400C238 426 258 474 280 704C302 474 322 426 350 400L334 384C314 404 296 414 280 414C264 414 246 404 226 384L210 400Z" fill="url(#inner)"/>
+  <path d="M154 512C210 482 350 482 406 512V604C344 576 216 576 154 604V512Z" fill="#E9F0FF" fill-opacity="0.9"/>
+  <path d="M178 536H260" stroke="#5675B9" stroke-width="4" stroke-linecap="round"/>
+  <path d="M300 536H382" stroke="#5675B9" stroke-width="4" stroke-linecap="round"/>
+  <path d="M178 560H250" stroke="#5675B9" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round"/>
+  <path d="M310 560H382" stroke="#5675B9" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round"/>
+  <path d="M130 622C178 590 214 584 246 602" stroke="#89B8FF" stroke-opacity="0.55" stroke-width="7" stroke-linecap="round"/>
+  <path d="M430 622C382 590 346 584 314 602" stroke="#89B8FF" stroke-opacity="0.55" stroke-width="7" stroke-linecap="round"/>
+  <path d="M420 190L472 646" stroke="url(#staff)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M420 164L436 198L472 204L446 230L452 266L420 249L388 266L394 230L368 204L404 198L420 164Z" fill="#89B8FF"/>
+  <path d="M420 184L429 203L450 206L435 222L438 244L420 234L402 244L405 222L390 206L411 203L420 184Z" fill="#F4CD73"/>
+  <path d="M126 286L142 294L126 302L118 318L110 302L94 294L110 286L118 270L126 286Z" fill="#F4CD73"/>
+  <path d="M392 336L406 344L392 352L384 366L376 352L362 344L376 336L384 322L392 336Z" fill="#89B8FF"/>
+  <g opacity="0.74">
+    <circle cx="132" cy="132" r="2" fill="#89B8FF"/>
+    <circle cx="430" cy="114" r="2" fill="#F4CD73"/>
+    <circle cx="88" cy="446" r="2" fill="#89B8FF"/>
+    <circle cx="486" cy="420" r="2" fill="#F4CD73"/>
+  </g>
+  <defs>
+    <radialGradient id="bg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(280 300) rotate(90) scale(500 350)">
+      <stop stop-color="#2C4E73"/>
+      <stop offset="0.62" stop-color="#16284D"/>
+      <stop offset="1" stop-color="#101936"/>
+    </radialGradient>
+    <linearGradient id="robe" x1="280" y1="360" x2="280" y2="704" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#365985"/>
+      <stop offset="0.55" stop-color="#1E2F59"/>
+      <stop offset="1" stop-color="#10172C"/>
+    </linearGradient>
+    <linearGradient id="hair" x1="280" y1="54" x2="280" y2="332" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="0.48" stop-color="#DCEBFF"/>
+      <stop offset="1" stop-color="#789BD8"/>
+    </linearGradient>
+    <linearGradient id="skin" x1="280" y1="88" x2="280" y2="328" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE1CC"/>
+      <stop offset="1" stop-color="#D79A9A"/>
+    </linearGradient>
+    <linearGradient id="inner" x1="280" y1="384" x2="280" y2="704" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#89B8FF" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#F4CD73" stop-opacity="0.16"/>
+    </linearGradient>
+    <linearGradient id="staff" x1="420" y1="190" x2="472" y2="646" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E9F0FF"/>
+      <stop offset="1" stop-color="#89B8FF"/>
+    </linearGradient>
+  </defs>
+</svg>

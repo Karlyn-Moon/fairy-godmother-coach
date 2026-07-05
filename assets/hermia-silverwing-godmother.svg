@@ -1,0 +1,67 @@
+<svg width="560" height="760" viewBox="0 0 560 760" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">赫尔弥娅·银翼，工作教母</title>
+  <desc id="desc">借鉴信使与策略神气质的工作教母，黑银短发，披银翼肩甲，手持信使权杖。</desc>
+  <rect width="560" height="760" rx="36" fill="#0D1F26"/>
+  <rect width="560" height="760" rx="36" fill="url(#bg)" opacity="0.92"/>
+  <circle cx="280" cy="126" r="84" fill="#74E4C0" fill-opacity="0.18"/>
+  <path d="M116 704C148 552 184 442 218 360H342C376 442 412 552 444 704H116Z" fill="url(#robe)"/>
+  <path d="M208 384L280 704L352 384C330 402 306 412 280 412C254 412 230 402 208 384Z" fill="#102B34" opacity="0.88"/>
+  <path d="M188 168C196 94 232 56 280 56C328 56 364 94 372 168C379 256 340 328 280 328C220 328 181 256 188 168Z" fill="url(#hair)"/>
+  <path d="M210 178C214 122 240 90 280 90C320 90 346 122 350 178L344 240C339 296 313 328 280 328C247 328 221 296 216 240L210 178Z" fill="url(#skin)"/>
+  <path d="M206 170C240 146 266 118 284 84C302 126 328 154 354 170C348 112 321 80 280 80C239 80 212 112 206 170Z" fill="#DDE4E8"/>
+  <path d="M180 152C214 90 270 56 348 50C308 70 276 106 252 158L180 152Z" fill="#1D2B35"/>
+  <ellipse cx="252" cy="214" rx="9" ry="10" fill="#23373C"/>
+  <ellipse cx="308" cy="214" rx="9" ry="10" fill="#23373C"/>
+  <circle cx="249" cy="211" r="3" fill="#74E4C0"/>
+  <circle cx="305" cy="211" r="3" fill="#74E4C0"/>
+  <path d="M264 254C274 261 286 261 296 254" stroke="#6B4C61" stroke-width="4" stroke-linecap="round"/>
+  <path d="M225 332C242 354 260 365 280 365C300 365 318 354 335 332V388C318 406 300 415 280 415C260 415 242 406 225 388V332Z" fill="#D99E91"/>
+  <path d="M196 398C240 436 320 436 364 398L336 704H224L196 398Z" fill="url(#inner)"/>
+  <path d="M176 396L226 454L186 482L138 410L176 396Z" fill="#C9D8E0" fill-opacity="0.72"/>
+  <path d="M384 396L334 454L374 482L422 410L384 396Z" fill="#C9D8E0" fill-opacity="0.72"/>
+  <path d="M158 628C204 604 232 594 252 598" stroke="#74E4C0" stroke-opacity="0.55" stroke-width="7" stroke-linecap="round"/>
+  <path d="M402 628C356 604 328 594 308 598" stroke="#74E4C0" stroke-opacity="0.55" stroke-width="7" stroke-linecap="round"/>
+  <path d="M430 186L488 648" stroke="url(#staff)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M414 226C392 208 388 180 410 160C432 178 436 206 414 226Z" fill="#C9D8E0"/>
+  <path d="M450 226C472 208 476 180 454 160C432 178 428 206 450 226Z" fill="#C9D8E0"/>
+  <circle cx="432" cy="236" r="17" fill="#74E4C0"/>
+  <path d="M432 219V253" stroke="#F4CD73" stroke-width="4" stroke-linecap="round"/>
+  <path d="M416 236H448" stroke="#F4CD73" stroke-width="4" stroke-linecap="round"/>
+  <path d="M122 300L138 308L122 316L114 332L106 316L90 308L106 300L114 284L122 300Z" fill="#74E4C0"/>
+  <path d="M400 348L416 356L400 364L392 380L384 364L368 356L384 348L392 332L400 348Z" fill="#F4CD73"/>
+  <g opacity="0.74">
+    <circle cx="134" cy="126" r="2" fill="#74E4C0"/>
+    <circle cx="428" cy="108" r="2" fill="#F4CD73"/>
+    <circle cx="92" cy="450" r="2" fill="#74E4C0"/>
+    <circle cx="474" cy="420" r="2" fill="#F4CD73"/>
+  </g>
+  <defs>
+    <radialGradient id="bg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(280 300) rotate(90) scale(500 350)">
+      <stop stop-color="#245C58"/>
+      <stop offset="0.6" stop-color="#143740"/>
+      <stop offset="1" stop-color="#0D1F26"/>
+    </radialGradient>
+    <linearGradient id="robe" x1="280" y1="360" x2="280" y2="704" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2E6660"/>
+      <stop offset="0.54" stop-color="#183A43"/>
+      <stop offset="1" stop-color="#101923"/>
+    </linearGradient>
+    <linearGradient id="hair" x1="280" y1="56" x2="280" y2="328" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4F7F8"/>
+      <stop offset="0.22" stop-color="#AEBCC4"/>
+      <stop offset="1" stop-color="#18232B"/>
+    </linearGradient>
+    <linearGradient id="skin" x1="280" y1="90" x2="280" y2="328" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE0CC"/>
+      <stop offset="1" stop-color="#D19392"/>
+    </linearGradient>
+    <linearGradient id="inner" x1="280" y1="398" x2="280" y2="704" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#74E4C0" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#89B8FF" stop-opacity="0.16"/>
+    </linearGradient>
+    <linearGradient id="staff" x1="430" y1="186" x2="488" y2="648" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E9F8F4"/>
+      <stop offset="1" stop-color="#74E4C0"/>
+    </linearGradient>
+  </defs>
+</svg>
